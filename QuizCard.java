@@ -1,4 +1,4 @@
-package com.angelortiz;
+// QuizCard object used in the other classes of the project
 
 public class QuizCard {
 

@@ -1,4 +1,7 @@
-package com.angelortiz;
+/*
+ * Class that allows the user to create a set of quiz cards
+ * and save them as a .txt file that can be read by the QuizCardPlayer class
+ */
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,11 +16,7 @@ public class QuizCardBuilder {
 	private JTextArea aArea;
 	private ArrayList<QuizCard> list = new ArrayList<QuizCard>();
 
-	/*public static void main(String[] args) {
-		QuizCardBuilder qcb = new QuizCardBuilder();
-		qcb.go();
-	}*/
-
+	// This method sets up the GUI and "runs" the class
 	public void go(){
 		frame = new JFrame("Quiz Card Builder");
 		JPanel panel = new JPanel();
@@ -71,12 +70,13 @@ public class QuizCardBuilder {
 		frame.getContentPane().add(BorderLayout.CENTER, panel);;
 		frame.setSize(520, 730);
 		frame.setVisible(true);
-		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
 
+	// Inner class for the save menu option
 	class saveListener implements ActionListener{
 		public void actionPerformed(ActionEvent event){
+			// JFileChooser lets the user browse through its computer to select a path
 			JFileChooser fileChooser = new JFileChooser();
 			fileChooser.showSaveDialog(frame);
 			File file = fileChooser.getSelectedFile();
@@ -85,6 +85,7 @@ public class QuizCardBuilder {
 		}
 	}
 
+	// Inner class for the new menu option
 	class newListener implements ActionListener{
 		public void actionPerformed(ActionEvent event){
 			list.clear();
@@ -92,8 +93,10 @@ public class QuizCardBuilder {
 		}
 	}
 
+	// Inner class for the next card button
 	class buttonListener implements ActionListener{
 		public void actionPerformed(ActionEvent event){
+			//
 			String q = qArea.getText();
 			String a = aArea.getText();
 			list.add(new QuizCard(q, a));
@@ -101,12 +104,14 @@ public class QuizCardBuilder {
 		}
 	}
 
+	// This method just empties both text fields and sets the cursor to the question field
 	public void clearCard(){
 		qArea.setText("");
 		aArea.setText("");
 		qArea.requestFocus();
 	}
 
+	// This method saves the current set of quiz cards into a .txt file
 	public void saveCardSet(File file){
 		try{
 			BufferedWriter bw = new BufferedWriter(new FileWriter(file));

@@ -1,4 +1,4 @@
-package com.angelortiz;
+// This class just creates a menu that runs either the QuizCardBuilder class or the QuizCardPlayer class
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,6 +11,7 @@ public class QuizCardMenu{
     qcm.go();
   }
 
+  // This method sets up the GUI
   public void go(){
     JFrame frame = new JFrame("Quiz Card Menu");
     JPanel panel = new JPanel();
@@ -36,6 +37,7 @@ public class QuizCardMenu{
     frame.setVisible(true);
   }
 
+  // Inner class for Quiz Card Builder Button
   public class builderListener implements ActionListener{
     public void actionPerformed(ActionEvent ev){
       QuizCardBuilder qcb = new QuizCardBuilder();
@@ -43,6 +45,7 @@ public class QuizCardMenu{
     }
   }
 
+  // Inner class for Quiz Card Player Button
   public class playerListener implements ActionListener{
     public void actionPerformed(ActionEvent ev){
       QuizCardPlayer qcp = new QuizCardPlayer();

@@ -1,4 +1,7 @@
-package com.angelortiz;
+/*
+ * This class allows the user to play a set of quiz cards created by
+ * the QuizCardBuilder class
+ */
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,11 +17,7 @@ public class QuizCardPlayer {
 	private JTextArea text;
 	private int index = 0;
 
-	/*public static void main(String[] args){
-		QuizCardPlayer player = new QuizCardPlayer();
-		player.go();
-	}*/
-
+	// This method set up the GUI and "runs" the class
 	public void go(){
 		JPanel panel = new JPanel();
 		text = new JTextArea(12, 30);
@@ -56,6 +55,7 @@ public class QuizCardPlayer {
 		frame.setVisible(true);
 	}
 
+	// Inner class for the load menu option
 	class loadListener implements ActionListener{
 		public void actionPerformed(ActionEvent event){
 			JFileChooser fc = new JFileChooser();
@@ -64,6 +64,7 @@ public class QuizCardPlayer {
 		}
 	}
 
+	// Inner class for the show answer button
 	class buttonListener implements ActionListener{
 		public void actionPerformed(ActionEvent event){
 			try{
@@ -75,8 +76,10 @@ public class QuizCardPlayer {
 		}
 	}
 
+	// Inner class for the next button
 	class nextListener implements ActionListener{
 		public void actionPerformed(ActionEvent event){
+			// This prevents the user from using the player without loading a quiz card set
 			if (next.getText().equals("Start")){
 				try{
 					text.setText(list.get(index).getQuestion());
@@ -101,6 +104,7 @@ public class QuizCardPlayer {
 		}
 	}
 
+	// This method loads a set of quiz cards saved as a .txt file by the builder class
 	public void loadCards(File file){
 		try{
 			BufferedReader br = new BufferedReader(new FileReader(file));
